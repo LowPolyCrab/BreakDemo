@@ -5,19 +5,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameplayWidget gameplayWidgetPrefab;
+    [SerializeField] private float _moveSpeed = 3f;
+    [SerializeField]private ViewCamera viewCameraPrefab;
     private GameplayWidget _gameplayWidget;
     private CharacterController _characterController;
+    private ViewCamera _viewCamera;
     
     private Animator _animator;
     private Vector2 _moveInput;
 
-    [SerializeField] private float _moveSpeed = 3f;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController> ();
         _animator = GetComponent<Animator> ();
         _gameplayWidget = Instantiate(gameplayWidgetPrefab);
         _gameplayWidget.MoveStick.OnInputUpdated += InputUpdated;
+        _viewCamera = Instantiate(viewCameraPrefab);
+        _viewCamera.SetFollowParent(transform);
     }
 
     private void InputUpdated(Vector2 inputVal)
