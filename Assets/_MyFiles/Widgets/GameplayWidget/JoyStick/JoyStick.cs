@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     [SerializeField] private RectTransform rangeTransform;
     [SerializeField] private RectTransform thumbStickTransform;
     [SerializeField] private float deadZone = 0.2f;
+    [SerializeField] private float weaponSwitchTime = 0.3f;
 
     private float _range;
 
@@ -43,6 +45,4 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
         OnInputUpdated?.Invoke(offset/_range);
     }
-
-
 }

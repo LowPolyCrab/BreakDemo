@@ -2,6 +2,8 @@ using UnityEngine;
 
 [RequireComponent (typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SocketManager))]
+[RequireComponent(typeof(InventoryComponent))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameplayWidget gameplayWidgetPrefab;
