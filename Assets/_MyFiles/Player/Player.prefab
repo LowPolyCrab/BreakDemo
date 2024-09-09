@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayWidgetPrefab: {fileID: 4123916929221580230, guid: 4795d157ca405d3418e2fd173d9bbad1, type: 3}
   _moveSpeed: 3
+  bodyRotSpeed: 10
+  viewCameraPrefab: {fileID: 0}
 --- !u!143 &808153831716572736
 CharacterController:
   m_ObjectHideFlags: 0
@@ -83,8 +85,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3600208052543546032}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5fa89808e57586b47a1b16d88a128122, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

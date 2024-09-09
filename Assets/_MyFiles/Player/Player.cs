@@ -8,13 +8,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float _moveSpeed = 3f;
     [SerializeField] private float bodyRotSpeed = 10f;
     [SerializeField]private ViewCamera viewCameraPrefab;
+    [SerializeField] private float animTurnLerpScale = 5.0f;
+
     private GameplayWidget _gameplayWidget;
     private CharacterController _characterController;
     private ViewCamera _viewCamera;
     
     private Animator _animator;
+    private float _animTurnSpeed;
     private Vector2 _moveInput;
     private Vector2 _aimInput;
+
+    static int animFwdId = Animator.StringToHash("Forward");
+    static int animRightId = Animator.StringToHash("Right");
+    static int animTurnId = Animator.StringToHash("TurnAmt");
 
 
     private void Awake()
@@ -52,13 +59,26 @@ public class Player : MonoBehaviour
         if (aimDir == Vector3.zero)
         {
             aimDir = moveDir;
+            _viewCamera.AddYawInput(_moveInput.x);
         }
 
+        float angleDelta = 0f;
         _viewCamera.AddYawInput(_moveInput.x);
         if (aimDir != Vector3.zero)
         {
+            Vector3 prevDir = transform.forward;
             Quaternion goalRot = Quaternion.LookRotation(aimDir, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, goalRot, Time.deltaTime * (_moveSpeed * bodyRotSpeed));
+            angleDelta = Vector3.SignedAngle(transform.forward,prevDir,Vector3.up);
         }
+
+        _animTurnSpeed = Mathf.Lerp(_animTurnSpeed, angleDelta/Time.deltaTime, Time.deltaTime * animTurnLerpScale);
+        _animator.SetFloat(animTurnId, angleDelta / Time.deltaTime);
+
+        float animFwdAmt = Vector3.Dot(moveDir, transform.forward);
+        float animRightAmt = Vector3.Dot(moveDir, transform.right);
+
+        _animator.SetFloat(animFwdId, animFwdAmt);
+        _animator.SetFloat(animRightId, animRightAmt);
     }
 }
