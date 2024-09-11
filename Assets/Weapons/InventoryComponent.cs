@@ -43,4 +43,12 @@ public class InventoryComponent : MonoBehaviour
 
         _currentWeaponIndex = nextWeaponIndex;
     }
+
+    public void FireCurrentActiveWeapon()
+    {
+        if (_currentWeaponIndex >= 0 && _currentWeaponIndex < _weapons.Count)
+        {
+            _weapons[_currentWeaponIndex].Attack();
+        }
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SocketManager))]
 [RequireComponent(typeof(InventoryComponent))]
+[RequireComponent(typeof(HealthComponent))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameplayWidget gameplayWidgetPrefab;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private CharacterController _characterController;
     private InventoryComponent _inventoryComponent;
     private ViewCamera _viewCamera;
+    private HealthComponent _healthComponent;
     
     private Animator _animator;
     private float _animTurnSpeed;
@@ -25,7 +27,8 @@ public class Player : MonoBehaviour
     private static readonly int animFwdId = Animator.StringToHash("Forward");
     private static readonly int animRightId = Animator.StringToHash("Right");
     private static readonly int animTurnId = Animator.StringToHash("TurnAmt");
-    private static readonly int SwitchWeaponId = Animator.StringToHash("SwitchWeapon");
+    private static readonly int switchWeaponId = Animator.StringToHash("SwitchWeapon");
+    private static readonly int FireId = Animator.StringToHash("Firing");
 
 
     private void Awake()
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
         _characterController = GetComponent<CharacterController> ();
         _animator = GetComponent<Animator> ();
         _inventoryComponent = GetComponent<InventoryComponent> ();
+        _healthComponent = GetComponent<HealthComponent> ();
         _gameplayWidget = Instantiate(gameplayWidgetPrefab);
         _gameplayWidget.MoveStick.OnInputUpdated += MoveInputUpdated;
         _gameplayWidget.AimStick.OnInputUpdated += AimInputUpdated;
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
 
     private void SwitchWeapon()
     {
-        _animator.SetTrigger(SwitchWeaponId);
+        _animator.SetTrigger(switchWeaponId);
     }
 
     public void WeaponSwitchPoint()
@@ -59,6 +63,12 @@ public class Player : MonoBehaviour
     private void AimInputUpdated(Vector2 inputVal)
     {
         _aimInput = inputVal;
+        _animator.SetBool(FireId, _aimInput != Vector2.zero);
+       
+    }
+    public void AttackPoint()
+    {
+        _inventoryComponent.FireCurrentActiveWeapon();
     }
 
     void Start()

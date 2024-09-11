@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayWidgetPrefab: {fileID: 4123916929221580230, guid: 4795d157ca405d3418e2fd173d9bbad1, type: 3}
-  _moveSpeed: 3
-  bodyRotSpeed: 10
-  viewCameraPrefab: {fileID: 0}
+  _moveSpeed: 7
+  bodyRotSpeed: 2
+  viewCameraPrefab: {fileID: 1423539969623812245, guid: 9db486b6541b3e6488bf3411d6c71033, type: 3}
   animTurnLerpScale: 5
 --- !u!143 &808153831716572736
 CharacterController:
@@ -125,7 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477adc417f9296241aa8c6b7db7586b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initilWeaponPrefabs: []
+  initialWeaponPrefabs:
+  - {fileID: 8414629478048067970, guid: acbc2bfa82acb124aaa2c4f065615eaf, type: 3}
+  - {fileID: 3954152916262964239, guid: 57ef3154e1e43104dbb74f55332ce6a0, type: 3}
 --- !u!1001 &995848015831515301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,7 +185,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 400620, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1300254539198070737}
+      addedObject: {fileID: 3429303204975745044}
+    - targetCorrespondingSourceObject: {fileID: 400620, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8213447817798624263}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
 --- !u!4 &995848015831653251 stripped
@@ -196,7 +201,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400620, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
   m_PrefabInstance: {fileID: 995848015831515301}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8191876947585504677
+--- !u!1001 &1321821287868190323
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -206,7 +211,73 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5840803135725659321, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: SocketName
-      value: Rifle
+      value: PistolSocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0441
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0308
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0119
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.67727095
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.73021024
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.061187748
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.06597809
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -101.179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 67.593
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -67.203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225322822900859736, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: m_Name
+      value: PistolSocket
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+--- !u!4 &8213447817798624263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+  m_PrefabInstance: {fileID: 1321821287868190323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5490837010212385376
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 995848015831653449}
+    m_Modifications:
+    - target: {fileID: 5840803135725659321, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
+      propertyPath: SocketName
+      value: RifleSocket
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,47 +289,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0126
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.4664187
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.5097038
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.46737137
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.551561
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 2.298
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -272.497
       objectReference: {fileID: 0}
     - target: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 262.638
       objectReference: {fileID: 0}
     - target: {fileID: 8225322822900859736, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
       propertyPath: m_Name
-      value: Socket
+      value: RifleSocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
---- !u!4 &1300254539198070737 stripped
+--- !u!4 &3429303204975745044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7179874921017174644, guid: b7a84e8976c8ea14db4577728b5580d4, type: 3}
-  m_PrefabInstance: {fileID: 8191876947585504677}
+  m_PrefabInstance: {fileID: 5490837010212385376}
   m_PrefabAsset: {fileID: 0}
