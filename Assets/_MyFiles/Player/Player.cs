@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     private GameplayWidget _gameplayWidget;
     private CharacterController _characterController;
+    private InventoryComponent _inventoryComponent;
     private ViewCamera _viewCamera;
     
     private Animator _animator;
@@ -21,20 +22,33 @@ public class Player : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _aimInput;
 
-    static int animFwdId = Animator.StringToHash("Forward");
-    static int animRightId = Animator.StringToHash("Right");
-    static int animTurnId = Animator.StringToHash("TurnAmt");
+    private static readonly int animFwdId = Animator.StringToHash("Forward");
+    private static readonly int animRightId = Animator.StringToHash("Right");
+    private static readonly int animTurnId = Animator.StringToHash("TurnAmt");
+    private static readonly int SwitchWeaponId = Animator.StringToHash("SwitchWeapon");
 
 
     private void Awake()
     {
         _characterController = GetComponent<CharacterController> ();
         _animator = GetComponent<Animator> ();
+        _inventoryComponent = GetComponent<InventoryComponent> ();
         _gameplayWidget = Instantiate(gameplayWidgetPrefab);
         _gameplayWidget.MoveStick.OnInputUpdated += MoveInputUpdated;
         _gameplayWidget.AimStick.OnInputUpdated += AimInputUpdated;
+        _gameplayWidget.AimStick.OnInputClicked += SwitchWeapon;
         _viewCamera = Instantiate(viewCameraPrefab);
         _viewCamera.SetFollowParent(transform);
+    }
+
+    private void SwitchWeapon()
+    {
+        _animator.SetTrigger(SwitchWeaponId);
+    }
+
+    public void WeaponSwitchPoint()
+    {
+        _inventoryComponent.EquipNextWeapon();
     }
 
     private void MoveInputUpdated(Vector2 inputVal)

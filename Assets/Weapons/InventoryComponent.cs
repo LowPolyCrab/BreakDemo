@@ -23,7 +23,7 @@ public class InventoryComponent : MonoBehaviour
         EquipNextWeapon();
     }
 
-    private void EquipNextWeapon()
+    public void EquipNextWeapon()
     {
         if (_weapons.Count == 0) return;
 
