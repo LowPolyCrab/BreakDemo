@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameplayWidget : MonoBehaviour
+public class GameplayWidget : Widgets
 {
     [SerializeField] private JoyStick moveStick;
     [SerializeField] private JoyStick aimStick;
