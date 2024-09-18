@@ -11,10 +11,10 @@ public class Rifle : Weapon
     }
     public override void Attack()
     {
-        GameObject target = _aimingComponent.GetAimResult(Owner.transform);
-        if (target)
+        AimResult target = _aimingComponent.GetAimResult(Owner.transform);
+        if (target.target)
         {
-            HealthComponent targetHealthComponent = target.GetComponent<HealthComponent>();
+            HealthComponent targetHealthComponent = target.target.GetComponent<HealthComponent>();
             targetHealthComponent?.ChangeHealth(-damage);
         }
     }

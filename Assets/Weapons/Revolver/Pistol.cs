@@ -10,8 +10,8 @@ public class Pistol : Weapon
     }
     public override void Attack()
     {
-        GameObject target = _aimingComponent.GetAimResult(Owner.transform);
-        if(target)
-            Debug.Log($"damaging {target.name}");
+        AimResult target = _aimingComponent.GetAimResult(Owner.transform);
+        if(target.target)
+            Debug.Log($"damaging {target.target.name}");
     }
 }
