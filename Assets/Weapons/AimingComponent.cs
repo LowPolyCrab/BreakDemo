@@ -19,14 +19,15 @@ public class AimingComponent : MonoBehaviour
     [SerializeField] private Transform muzzle;
     [SerializeField] private float aimRange = 10f;
     [SerializeField] private LayerMask aimMask;
-    [SerializeField] private bool bOverrides = true;
+    [SerializeField] private bool bOverrideLocation = true;
+    [SerializeField] private bool bFlattenAim = true;
     [SerializeField] private float heightOverride = 1.5f;
     [SerializeField] private float fwdOffset = 0.5f;
 
     private Vector3 _debugAimStart;
     private Vector3 _debugAimDir;
 
-    public AimResult GetAimResult(Transform aimTransform)
+    public AimResult GetAimResult(Transform aimTransform = null)
     {
         Vector3 aimStart = muzzle.position;
         Vector3 aimDir = muzzle.forward;
@@ -35,9 +36,15 @@ public class AimingComponent : MonoBehaviour
             aimStart = aimTransform.position;
             aimDir = aimTransform.forward;
         }
-        if (bOverrides)
+        if (bOverrideLocation)
         {
             aimStart.y = heightOverride;
+            aimStart += aimDir * fwdOffset;
+        }
+
+        if(bFlattenAim)
+        {
+            aimDir.y = 0;
             aimStart += aimDir * fwdOffset;
         }
 

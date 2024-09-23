@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     private HealthComponent _healthComponent;
     private Animator _animator;
-    private static readonly int DeathId = Animator.StringToHash("DeathAnimationFinished");
+    private static readonly int DeathId = Animator.StringToHash("Dead");
 
     private void Awake()
     {
