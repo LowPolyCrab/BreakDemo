@@ -22,9 +22,11 @@ public static class TransformExtentions
     {
         if(Physics.Raycast(transform.position + startOffset, transform.GetDir(otherTransform), out RaycastHit hit, checkDistance))
         {
-            if (hit.collider.gameObject == otherTransform.gameObject)
-                return false;
+            if (hit.collider.gameObject != otherTransform.gameObject)
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Sense : MonoBehaviour
 {
+    public delegate void OnSenseUpdatedDelegate(Stimuli stimuli, bool bWasSensed);
+    public event OnSenseUpdatedDelegate OnSenseUpdated;
+    
     [SerializeField] private bool bDrawDebug = false;
     [SerializeField] private float forgetTime = 3f;
     private static HashSet<Stimuli> _registeredStimuliSet = new HashSet<Stimuli>();
@@ -23,7 +26,10 @@ public abstract class Sense : MonoBehaviour
         _registeredStimuliSet.Remove(stimuli);
     }
 
-    protected abstract bool IsStimuliSensible(Stimuli stimuli);
+    protected virtual bool IsStimuliSensible(Stimuli stimuli)
+    {
+        return false;
+    }
 
     private void Update()
     {
@@ -40,7 +46,7 @@ public abstract class Sense : MonoBehaviour
         }
     }
 
-    private void HandleNonSensibleStimuli(Stimuli stimuli)
+    protected void HandleNonSensibleStimuli(Stimuli stimuli)
     {
         //Not sensed and never sensed prior
         if(!_currentSensibleStimuliSet.Contains(stimuli))
@@ -51,7 +57,7 @@ public abstract class Sense : MonoBehaviour
         Coroutine forgetingCoroutine = StartCoroutine(ForgetStimuli(stimuli));
         _forgettingCoroutine.Add(stimuli, forgetingCoroutine);
     }
-    private void HandleSensibleStimuli(Stimuli stimuli)
+    protected void HandleSensibleStimuli(Stimuli stimuli)
     {
         //Currently sensed and sensed prior
         if(_currentSensibleStimuliSet.Contains(stimuli))
@@ -66,13 +72,14 @@ public abstract class Sense : MonoBehaviour
             return;
         }
 
-        Debug.Log($"I just sensed: {stimuli.gameObject.name}");
+        OnSenseUpdated?.Invoke(stimuli, true);
     }
 
     private IEnumerator ForgetStimuli(Stimuli stimuli)
     {
         yield return new WaitForSeconds(forgetTime);
-        Debug.Log($"I just lost track of: {stimuli.gameObject.name}");
+        _forgettingCoroutine.Remove(stimuli);
+        OnSenseUpdated.Invoke(stimuli, false);
     }
 
     private void OnDrawGizmos()

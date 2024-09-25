@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class HitSense : Sense
 {
-    protected override bool IsStimuliSensible(Stimuli stimuli)
+    private void Awake()
     {
-        throw new System.NotImplementedException();
+        HealthComponent healthComp = GetComponent<HealthComponent>();
+        if(healthComp) { healthComp.OnTakenDamage += HandleDamageEvent; }
+    }
+
+    private void HandleDamageEvent(float newHealth, float delta, float maxHealth, GameObject instigator)
+    {
+        Stimuli instigatorStimuli = instigator.GetComponent<Stimuli>();
+        if (instigatorStimuli) { HandleSensibleStimuli(instigatorStimuli); }
     }
 }

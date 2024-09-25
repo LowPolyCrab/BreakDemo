@@ -47,6 +47,11 @@ GameObject:
   - component: {fileID: 4366362866683049742}
   - component: {fileID: 4967973975236206176}
   - component: {fileID: 2535332575461532980}
+  - component: {fileID: 4248240258654640933}
+  - component: {fileID: 9216966582561047131}
+  - component: {fileID: 6972413239489823105}
+  - component: {fileID: 8767457983113074500}
+  - component: {fileID: 8592171164203756800}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -168,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bDrawDebug: 0
+  forgetTime: 3
   awareRange: 1
 --- !u!114 &2535332575461532980
 MonoBehaviour:
@@ -182,8 +188,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bDrawDebug: 0
+  forgetTime: 3
   sightRange: 4
   sightPeripheralHalfAngle: 38.5
+--- !u!114 &4248240258654640933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598140615558770206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f5c188b2fb176409f75f5862887d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 0
+  forgetTime: 3
+  hearingMinVolume: 10
+--- !u!114 &9216966582561047131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598140615558770206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c63e1337137f244bad5486689cf736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 0
+  forgetTime: 3
+--- !u!114 &6972413239489823105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598140615558770206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcd9916b9de5e342a03604e97adf264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8767457983113074500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598140615558770206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 7463159336956907704, guid: bb302e7e5e419f54f893da874c5c086c, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 156410514343198967
+  references:
+    version: 2
+    RefIds:
+    - rid: 156410514343198967
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 7598140615558770206}
+--- !u!195 &8592171164203756800
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598140615558770206}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &8485410189853676260
 PrefabInstance:
   m_ObjectHideFlags: 0

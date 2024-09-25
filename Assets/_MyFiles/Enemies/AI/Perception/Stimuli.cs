@@ -11,4 +11,9 @@ public class Stimuli : MonoBehaviour
     {
         Sense.UnregisterStimuli(this);
     }
+
+    public void SendSoundEvent(float volume)
+    {
+        HearingSense.SendSoundEvent(volume, this);
+    }
 }
